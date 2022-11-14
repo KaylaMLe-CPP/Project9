@@ -1,0 +1,39 @@
+class Tree {
+	field int halfWidth;
+	field int nextHeight;
+
+	constructor Tree new(int maxWidth){
+		let halfWidth = Math.divide(maxWidth, 2);
+		// minimum width is 50 so the trunk can fit
+		if (halfWidth < 25) {
+			let halfWidth = 25;
+		}
+
+		if (halfWidth > 255) {
+			let halfWidth = 255;
+		}		
+
+		do Screen.drawRectangle((halfWidth - 25), 250, (halfWidth + 25), 255);
+		let nextHeight = 249;// trunk is 6 pixels tall
+
+		return this;
+	}
+
+	method boolean addBranch(int width) {
+		var int branchWidth;
+
+		if (nextHeight < 0) {
+			return (false);
+		}
+
+		let branchWidth = Math.divide(width, 2);
+		if (branchWidth > halfWidth) {
+			let branchWidth = halfWidth;
+		}
+
+		do Screen.drawLine((halfWidth - branchWidth), nextHeight, (halfWidth + branchWidth), nextHeight);
+		let nextHeight = nextHeight - 1;
+		
+		return true;
+	}
+}

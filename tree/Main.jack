@@ -1,0 +1,26 @@
+// creates a tree then adds branchs up to the screen's height
+
+class Main {
+	function void main() {
+		var int treeWidth;
+		var Tree thisTree;
+
+		var int branch;
+		var boolean branchAdded;
+
+		do Output.printString("Please enter a maximum width for the tree.\n");
+		let treeWidth = Keyboard.readInt("(minimum width is 25.): ");
+		let thisTree = Tree.new(treeWidth);
+
+		
+		let branch = Keyboard.readInt("Next branch width: ");
+		let branchAdded = thisTree.addBranch(branch);
+
+		while (branchAdded) {
+			let branch = Keyboard.readInt("Next branch width: ");
+			let branchAdded = thisTree.addBranch(branch);
+		}
+
+		return;
+	}
+}
